@@ -73,7 +73,7 @@ export default function VideoCompare({ label }: VideoCompareProps) {
     <div className="space-y-6">
       {keys.map((k) => {
         const originalSrc = `${basePath}${k}.mp4`;
-        const sam3dSrc = `${basePath}${k}_sam3d.mp4`;
+        const sam3dSrc = `${basePath}${k}.gif`;
         return (
           <div key={k} className="space-y-2">
             <div className="font-semibold">{k}</div>
@@ -85,6 +85,10 @@ export default function VideoCompare({ label }: VideoCompareProps) {
                 <video
                   src={originalSrc}
                   controls
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   preload="metadata"
                   className="w-full max-h-[360px] bg-black"
                 />
@@ -93,11 +97,10 @@ export default function VideoCompare({ label }: VideoCompareProps) {
                 <div className="text-sm text-gray-500 dark:text-gray-400">
                   SAM3D
                 </div>
-                <video
+                <img
                   src={sam3dSrc}
-                  controls
-                  preload="metadata"
-                  className="w-full max-h-[360px] bg-black"
+                  alt={`${k} SAM3D`}
+                  className="w-full max-h-[360px] bg-black object-contain"
                 />
               </div>
             </div>
