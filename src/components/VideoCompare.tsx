@@ -72,7 +72,8 @@ export default function VideoCompare({ label }: VideoCompareProps) {
   return (
     <div className="space-y-6">
       {keys.map((k) => {
-        const originalSrc = `${basePath}${k}.mp4`;
+        const originalImageSrc = `${basePath}${k}.jpg`;
+        const huanyanSrc = `${basePath}${k}.mp4`;
         const sam3dSrc = `${basePath}${k}.gif`;
         return (
           <div key={k} className="space-y-2">
@@ -82,8 +83,18 @@ export default function VideoCompare({ label }: VideoCompareProps) {
                 <div className="text-sm text-gray-500 dark:text-gray-400">
                   Original
                 </div>
+                <img
+                  src={originalImageSrc}
+                  alt={`${k} Original`}
+                  className="w-full max-h-[360px] bg-black object-contain"
+                />
+              </div>
+              <div className="flex-1 space-y-1">
+                <div className="text-sm text-gray-500 dark:text-gray-400">
+                  Huanyan
+                </div>
                 <video
-                  src={originalSrc}
+                  src={huanyanSrc}
                   controls
                   autoPlay
                   loop
